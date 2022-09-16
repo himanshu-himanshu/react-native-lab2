@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 
 export default function App() {
   const [text, setText] = React.useState(" ");
@@ -11,8 +18,15 @@ export default function App() {
         style={styles.inputField}
         clearTextOnFocus={true}
         onChangeText={(text) => setText(text)}
+        value={text}
       />
       <Text style={styles.dynamicText}>{text}</Text>
+      <TouchableOpacity
+        style={styles.btnContainer}
+        onPress={() => setText(" ")}
+      >
+        <Text style={styles.clearButton}>Clear Text</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -44,5 +58,14 @@ const styles = StyleSheet.create({
     margin: 20,
     fontSize: 16,
     color: "gray",
+  },
+  btnContainer: {
+    backgroundColor: "purple",
+    padding: 10,
+    borderRadius: 5,
+  },
+  clearButton: {
+    color: "white",
+    fontWeight: "700",
   },
 });
